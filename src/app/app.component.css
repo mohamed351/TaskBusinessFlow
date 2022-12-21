@@ -1,0 +1,33 @@
+
+.bussine-flow{
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-areas: "navbar navbar navbar navbar navbar"
+                  "ribbon ribbon ribbon ribbon ribbon"
+                  "digram digram  digram sidebar sidebar";
+}
+.nav-bar{
+  grid-area: navbar;
+
+
+  height: 10vh;
+  grid-template-rows: minmax(1vh,5vh);
+
+}
+.ribbon{
+  grid-area: ribbon;
+
+  height: 10vh;
+
+
+}
+.main-digram{
+  grid-area: digram;
+  height: 80vh;
+
+}
+.sidebar{
+  grid-area: sidebar;
+  height: 80vh;
+}

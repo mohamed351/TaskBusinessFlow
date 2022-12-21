@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~material-icons/iconfont/material-icons.css';
+
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+:root{
+  --primary-color:#0072C5;
+  --primary-text-color:#fff;
+  --seconday-color:#034784;
+}

@@ -1,0 +1,9 @@
+.btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

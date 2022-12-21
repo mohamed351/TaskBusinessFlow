@@ -1,0 +1,20 @@
+<!--a draggable element-->
+<div [dndDraggable]="businesssFlow.draggable.data"
+     [dndDisableIf]="businesssFlow.draggable.disable"
+     (dndStart)="businesssFlow.onDragStart($event)"
+     (dndCopied)="businesssFlow.onDraggableCopied($event)"
+     (dndLinked)="businesssFlow.onDraggableLinked($event)"
+     (dndMoved)="businesssFlow.onDraggableMoved($event)"
+     (dndCanceled)="businesssFlow.onDragCanceled($event)"
+     (dndEnd)="businesssFlow.onDragEnd($event)">
+
+
+
+
+    draggable ({{businesssFlow.draggable.effectAllowed}}) <span [hidden]="!businesssFlow.draggable.disable">DISABLED</span>
+
+
+    <div dndDragImageRef>DRAG_IMAGE</div>
+
+</div>
+
