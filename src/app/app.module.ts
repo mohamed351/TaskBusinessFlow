@@ -11,6 +11,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { NavBarButtonComponent } from './ui/nav-bar-button/nav-bar-button.component';
 import { RibbonButtonComponent } from './ui/ribbon-button/ribbon-button.component';
 import { DndModule } from 'ngx-drag-drop';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { DndModule } from 'ngx-drag-drop';
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
-    DndModule
+    DndModule,
+    NgxGraphModule
+
 
 
   ],

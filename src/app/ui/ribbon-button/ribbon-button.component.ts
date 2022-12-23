@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BusinessFlowService } from 'src/app/services/business-flow.service';
 
 @Component({
   selector: 'app-ribbon-button',
@@ -8,11 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RibbonButtonComponent implements OnInit {
   @Input("text") text ="";
   @Input("icon") icon ="";
-  constructor() { }
+  @Output("click") onClick = new EventEmitter<any|null>();
+  constructor(private busineessFlow:BusinessFlowService) { }
 
   ngOnInit(): void {
   }
   buttonClicked(data:any){
+
 
   }
 

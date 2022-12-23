@@ -1,11 +1,13 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { DndDropEvent } from 'ngx-drag-drop';
 import { BehaviorSubject, Subject } from 'rxjs';
+import * as uuid from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BusinessFlowService {
+
   draggable = {
     // note that data is handled with JSON.stringify/JSON.parse
     // only set simple data or POJO's as methods will be lost
@@ -14,9 +16,19 @@ export class BusinessFlowService {
     disable: false,
     handle: false
   };
-  canvas: ElementRef<HTMLCanvasElement> | null = null;
-  public ctx: CanvasRenderingContext2D | null |undefined = null;
+
   DropSubject = new Subject<any|null>();
+   targetID:string| null = null;
+   sourceID:string| null = null;
+
+ public nodes:any[] = [
+
+  ]
+ public links:any []= [
+
+  ]
+
+ public update$: Subject<any> = new Subject();
   constructor() { }
 
 
@@ -57,7 +69,44 @@ export class BusinessFlowService {
   }
 
   onDrop(event:DndDropEvent) {
-    this.DropSubject.next(JSON.stringify(event, null, 2));
-    console.log("dropped", JSON.stringify(event, null, 2));
+    this.DropSubject.next(event.data);
   }
+
+  onTargetAnSourceSelect(data:any){
+    if(this.sourceID === null){
+      this.sourceID =data.id;
+      return;
+    }
+    if(this.targetID ===null){
+      this.targetID =data.id;
+      return;
+    }
+    if(this.targetID !== null && this.sourceID !== null){
+      this.sourceID = data.id;
+      this.targetID =null;
+      return;
+    }
+
+
+
+
+  }
+
+  addConnector(){
+    if(this.targetID != null && this.sourceID != null){
+      this.links.push({
+        id:uuid.v4(),
+        source:this.sourceID,
+        target: this.targetID,
+      });
+      this.sourceID == null;
+      this.targetID = null;
+      this.update$.next(true);
+    }
+    else{
+      alert("please select soruce and distination");
+    }
+  }
+
+
 }

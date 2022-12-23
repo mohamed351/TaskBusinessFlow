@@ -1,5 +1,6 @@
 <!--a draggable element-->
-<div [dndDraggable]="businesssFlow.draggable.data"
+<div class="side-bar-container">
+<div class="card" [dndDraggable]="'stage'"
      [dndDisableIf]="businesssFlow.draggable.disable"
      (dndStart)="businesssFlow.onDragStart($event)"
      (dndCopied)="businesssFlow.onDraggableCopied($event)"
@@ -7,14 +8,35 @@
      (dndMoved)="businesssFlow.onDraggableMoved($event)"
      (dndCanceled)="businesssFlow.onDragCanceled($event)"
      (dndEnd)="businesssFlow.onDragEnd($event)">
+    <div dndDragImageRef>
+      <div>
+          <mat-icon>home</mat-icon>
+          Stage
+      </div>
 
-
-
-
-    draggable ({{businesssFlow.draggable.effectAllowed}}) <span [hidden]="!businesssFlow.draggable.disable">DISABLED</span>
-
-
-    <div dndDragImageRef>DRAG_IMAGE</div>
+    </div>
 
 </div>
 
+
+
+<div class="card" [dndDraggable]="'condition'"
+     [dndDisableIf]="businesssFlow.draggable.disable"
+     (dndStart)="businesssFlow.onDragStart($event)"
+     (dndCopied)="businesssFlow.onDraggableCopied($event)"
+     (dndLinked)="businesssFlow.onDraggableLinked($event)"
+     (dndMoved)="businesssFlow.onDraggableMoved($event)"
+     (dndCanceled)="businesssFlow.onDragCanceled($event)"
+     (dndEnd)="businesssFlow.onDragEnd($event)">
+    <div dndDragImageRef>
+      <div>
+          <mat-icon>home</mat-icon>
+          Condition
+      </div>
+
+    </div>
+
+</div>
+
+
+</div>

@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 import { BusinessFlowService } from 'src/app/services/business-flow.service';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-digram',
@@ -9,22 +11,31 @@ import { BusinessFlowService } from 'src/app/services/business-flow.service';
 export class DigramComponent implements OnInit {
 
 
-
-  @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement> | null = null;
-  private ctx: CanvasRenderingContext2D | null = null;
+  // @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement> | null = null;
+  // private ctx: CanvasRenderingContext2D | null = null;
 
   constructor(public businessFlow:BusinessFlowService) { }
 
+
   ngOnInit(): void {
-    this.ctx = this.canvas!.nativeElement.getContext('2d');
     this.businessFlow.DropSubject.subscribe(a=>{
-      this.ctx!.fillStyle = 'red';
-      this.ctx!.fillRect(10, 10, 10, 10);
+       this.businessFlow.nodes.push({id: uuid.v4(), label:a});
+       this.businessFlow.update$.next(true);
+
     })
-    console.log(this.ctx);
+
 
 
 
   }
+
+  onNodeSelect(data:any){
+    this.businessFlow.onTargetAnSourceSelect(data);
+    // this.businessFlow.nodes.find(a=> a.id == data)
+  }
+  clickedOnSvg(){
+
+  }
+
 
 }

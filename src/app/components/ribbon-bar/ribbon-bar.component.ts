@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BusinessFlowService } from 'src/app/services/business-flow.service';
 
 @Component({
   selector: 'app-ribbon-bar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RibbonBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private businessFlow:BusinessFlowService) { }
 
   ngOnInit(): void {
+  }
+  onConnectorClick(data:any){
+  this.businessFlow.addConnector();
   }
 
 }
